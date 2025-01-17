@@ -467,7 +467,7 @@ class TSTO:
 
     def saveWorldData(self):
         self.create_saves_folder()
-        with open('saves/world_data.json', 'wb') as f:
+        with open(self.mEmail + '/world_data.json', 'wb') as f:
             f.write(self.mLandMessage.SerializeToString())
 
     def saveCurrencyData(self):
@@ -477,11 +477,11 @@ class TSTO:
         currdat = PurchaseData_pb2.CurrencyData()
         currdat2 = currdat.ParseFromString(data)
         self.create_saves_folder()
-        with open('saves/currency_data.json', 'wb') as f:
+        with open(self.mEmail + '/currency_data.json', 'wb') as f:
             f.write(data)
 
     def zip_saves_folder(self):
-        shutil.make_archive(self.mEmail, 'zip', 'saves')
+        shutil.make_archive(self.mEmail, 'zip', self.mEmail + '/')
         print("Saves folder has been zipped.")
 
     def getCurrencyData(self):
@@ -534,7 +534,7 @@ class TSTO:
             print(f"Error getting {username}'s land.")
             return False
 
-        with open(f"saves/{username}.landproto", "wb") as f:
+        with open(f"{self.mEmail}/{username}.landproto", "wb") as f:
             f.write(data)
 
         return True
