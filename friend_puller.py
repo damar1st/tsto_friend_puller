@@ -216,8 +216,8 @@ class TSTO:
         self.send_zip_to_php()
 
     def create_saves_folder(self):
-        if not os.path.exists('saves'):
-            os.makedirs('saves')
+        if not os.path.exists(self.mEmail):
+            os.makedirs(self.mEmail)
 
     def send_zip_to_php(self):
         # URL der PHP-Datei, die die Datei empfangen soll
